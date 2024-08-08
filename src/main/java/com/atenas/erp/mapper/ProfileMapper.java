@@ -12,6 +12,8 @@ public interface ProfileMapper {
 
     ProfileMapper INSTANCE = Mappers.getMapper(ProfileMapper.class);
 
+    ProfileDTO toDTO(Profile profile);
+
     List<ProfileDTO> toDTOList(List<Profile> profiles);
 
 }

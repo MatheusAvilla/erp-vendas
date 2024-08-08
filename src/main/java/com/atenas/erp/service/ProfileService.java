@@ -19,7 +19,8 @@ public class ProfileService {
     private final ProfileRepository profileRepository;
 
     public void createProfile(ProfileDTO profileDTO) {
-        Optional<Profile> profile = profileRepository.findByProfileName(profileDTO.getProfileName().name());
+        Optional<Profile> profile = profileRepository.findByProfileName(ProfileEnum
+                .fromName(profileDTO.getProfileName().name()));
         profile.ifPresentOrElse(existentProfile -> {
             throw new AlreadyExistsException(existentProfile.getProfileName() + " already exists.");
         }, () -> profileRepository.save(Profile.builder().profileName(profileDTO.getProfileName()).build()));
