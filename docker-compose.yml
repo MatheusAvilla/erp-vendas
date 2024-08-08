@@ -1,0 +1,17 @@
+version: '3.8'  # Specify the version of Docker Compose
+
+services:
+  postgres:
+    image: postgres:13  # Specify the version of PostgreSQL you want to use
+    container_name: my_postgres_container  # Optional: name the container
+    environment:
+      POSTGRES_USER: erp  # Set the PostgreSQL user
+      POSTGRES_PASSWORD: erp  # Set the PostgreSQL password
+      POSTGRES_DB: erp-database  # Set the name of the database
+    ports:
+      - "5432:5432"  # Expose the PostgreSQL port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Mount a volume for persistent data
+
+volumes:
+  postgres_data:
