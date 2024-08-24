@@ -28,13 +28,13 @@ public class ProfileStep {
     @Given("Eu tento criar um perfil com o nome {string}")
     public void shouldCreateNewProfile(String profileName) {
         ProfileDTO profileDTO = new ProfileDTO();
-        profileDTO.setProfileName(ProfileEnum.fromName(profileName));
+        profileDTO.setProfileName(profileName);
         profileService.createProfile(profileDTO);
     }
 
     @Then("O perfil {string} deve ser criado com sucesso")
     public void verifyProfileWasCreated(String profileName) {
-        Optional<Profile> profile = profileRepository.findByProfileName(ProfileEnum.fromName(profileName));
+        Optional<Profile> profile = profileRepository.findByProfileName(ProfileEnum.valueOf(profileName));
         Assertions.assertNotNull(profile);
         Assertions.assertTrue(profile.isPresent());
     }

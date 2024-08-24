@@ -17,6 +17,6 @@ public class ProfileDTO implements Serializable {
 
     @NotBlank(message = "O preenchimento do perfil é obrigatório")
     @Enumerated(EnumType.STRING)
-    private ProfileEnum profileName;
+    private String profileName;
 
 }
